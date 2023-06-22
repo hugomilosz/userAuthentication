@@ -1,13 +1,14 @@
 from decouple import config
 from flask import Flask
-from flask_bcrypt import Bcrypt
+from flask_login import LoginManager # Add this line
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object(config("APP_SETTINGS"))
 
-bcrypt = Bcrypt(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
