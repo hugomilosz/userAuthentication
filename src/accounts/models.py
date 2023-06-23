@@ -1,11 +1,11 @@
 from datetime import datetime
 
+from flask_login import UserMixin
+
 from src import bcrypt, db
 
 # creates a user model and initialises the fields
-
-
-class User(db.Model):
+class User(UserMixin, db.Model):
 
     __tablename__ = "users"
 
